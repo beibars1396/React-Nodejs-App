@@ -5,6 +5,7 @@ import createRootReducer from './reducers';
 import initializers from "./initializers";
 import { createBrowserHistory } from 'history';
 import { composeWithDevTools } from '@redux-devtools/extension';
+import { useDispatch } from "react-redux";
 
 const history = createBrowserHistory();
 let store: any;
@@ -27,6 +28,9 @@ export function configureStore(preloadedState?: any){
 
     return store;
 }
+
+export type AppDispatch = typeof store.dispatch
+export const useAppDispatch: () => AppDispatch = useDispatch 
 
 export function getHistory() {
     return history;
